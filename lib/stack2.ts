@@ -22,7 +22,9 @@ export class Stack2 extends cdk.Stack {
 				},
 				region: stack1Region, // パラメータが存在するリージョン
 				// physicalResourceId: PhysicalResourceId.of("GetParameter"),
-				physicalResourceId: PhysicalResourceId.of(Date.now().toString()), // 毎回新しい値を取得
+				physicalResourceId: PhysicalResourceId.of(`/${projectName}/${Date.now().toString()}`),
+				// ↑毎回新しい値かつプロジェクトにちなんだID。
+				// この文字列になるわけではないが、それっぽい物理名になる。
 			},
 			policy: AwsCustomResourcePolicy.fromSdkCalls({
 				// resources: AwsCustomResourcePolicy.ANY_RESOURCE, // さすがにガバガバすぎ
